@@ -4516,8 +4516,6 @@ with Stochasticity</h1>
 
     </section>
 
-    <todo> add discrete time derivation </todo>
-
   </section> <!-- end basic derivation -->
 
   <section data-type="sect1"><h1>Finite-horizon formulations</h1>
@@ -4657,21 +4655,6 @@ with Stochasticity</h1>
       s^T(t), etc.</todo>
     </section>
 
-    <!--
-    <section data-type="sect2"><h1>Minimum-time LQR</h1>
-
-      \begin{gather*}
-      \dot{\bx} = {\bf A}\bx + \bB\bu \\
-      h(\bx) = \bx^T {\bf Q}_f \bx,
-      \quad {\bf Q}_f = {\bf Q}_f^T \ge 0 \\
-      g(\bx,\bu,t) = 1 + \bx^T {\bf Q} \bx + \bu {\bf R} \bu,\\
-      {\bf Q} = {\bf
-      Q}^T \ge 0, {\bf R}={\bf R}^T>0
-      \end{gather*}
-
-    </section>
-    -->
-
     <section data-type="sect2"><h1>Linear Final Boundary Value Problems</h1>
 
       <p> The finite-horizon LQR formulation can be used to impose a strict
@@ -4697,6 +4680,43 @@ with Stochasticity</h1>
   </section> <!-- end finite horizon -->
 
   <section data-type="sect1"><h1>Variations and extensions</h1>
+
+    <!--
+    <section data-type="sect2"><h1>Minimum-time LQR</h1>
+
+      \begin{gather*}
+      \dot{\bx} = {\bf A}\bx + \bB\bu \\
+      h(\bx) = \bx^T {\bf Q}_f \bx,
+      \quad {\bf Q}_f = {\bf Q}_f^T \ge 0 \\
+      g(\bx,\bu,t) = 1 + \bx^T {\bf Q} \bx + \bu {\bf R} \bu,\\
+      {\bf Q} = {\bf
+      Q}^T \ge 0, {\bf R}={\bf R}^T>0
+      \end{gather*}
+
+    </section>
+    -->
+
+    <section data-type="sect2"><h1>LQR as a convex optimization</h1>
+      <p>Solving the algebraic Riccati equation is the preferred way of
+      computing thse LQR solution.  But it is helpful to know that one <i>could
+      </i> also compute it with convex optimization, specifically by formulating
+      the optimality conditions as a Linear Matrix Inequality (LMI).  In
+      addition to deepening our understanding, this can be useful if we want to
+      extend the LQR solution or solve for the LQR gains jointly as part of a
+      bigger optimization.</p>
+      
+      <p>Derivation coming soon...</p>
+
+    </section>
+
+    <section data-type="sect2"><h1>Discrete-time Riccati Equations</h1>
+
+      <p>Essentially all of the results above have a natural correlate for discrete-time systems. What's more, the discrete time versions tend to be simpler to think about in the model-predictive control (MPC) setting that we'll be discussing below and in the next chapters.</p>
+
+      <p>Consider the discrete time dynamics: $$\bx[n+1] = {\bf A}\bx[n] + {\bf B}\bu[n],$$ and we wish to minimize $$\min \sum_{n=0}^{N-1} \bx^T[n] {\bf Q}
+        \bx[n] + \bu^T[n] {\bf R} \bu[n], \qquad {\bf Q} = {\bf Q}^T \succeq 0,
+        {\bf R} = {\bf R}^T \succ 0.$$</p>
+    </section>
 
     <section data-type="sect2"><h1>LQR with input and state constraints</h1>
       <p>A natural extension for linear optimal control is the consideration of
@@ -4735,19 +4755,6 @@ with Stochasticity</h1>
       two feet on the ground.</p>
 
       <todo>Add the equality-constrained LQR derivation here.</todo>
-
-    </section>
-
-    <section data-type="sect2"><h1>LQR as a convex optimization</h1>
-      <p>Solving the algebraic Riccati equation is the preferred way of
-      computing thse LQR solution.  But it is helpful to know that one <i>could
-      </i> also compute it with convex optimization, specifically by formulating
-      the optimality conditions as a Linear Matrix Inequality (LMI).  In
-      addition to deepening our understanding, this can be useful if we want to
-      extend the LQR solution or solve for the LQR gains jointly as part of a
-      bigger optimization.</p>
-      
-      <p>Derivation coming soon...</p>
 
     </section>
 
